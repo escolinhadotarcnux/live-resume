@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>resumo de uso claude.code dio.me</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-page: #fbfbfa;
+      --sidebar: #f7f7f5;
+      --text: #37352f;
+      --muted: #6b6a67;
+      --border: #e9e9e7;
+      --border-strong: #ddddda;
+      --hover: #efefed;
+      --accent: #111111;
+      --code-bg: #f7f6f3;
+      --callout-bg: #f7f7f5;
+      --warn-bg: #fbf3db;
+      --danger-bg: #fdeeee;
+      --radius: 10px;
+      --content-width: 880px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 20px 14px 24px;
+      border-right: 1px solid var(--border);
+      background: var(--sidebar);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 8px 14px;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      background: #111111;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: grid;
+      gap: 2px;
+    }
+
+    nav a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: background 120ms ease, color 120ms ease;
+    }
+
+    nav a:hover {
+      background: var(--hover);
+      color: var(--text);
+    }
+
+    main {
+      padding: 40px 48px 80px;
+    }
+
+    .hero {
+      max-width: var(--content-width);
+      padding: 0;
+      margin-bottom: 28px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #f1f1ef;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--text);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.65rem);
+      font-weight: 740;
+      margin: 8px 0 10px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 720;
+      margin: 0 0 14px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 680;
+      margin: 28px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      font-size: 0.97rem;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .button:hover {
+      background: #f7f7f5;
+    }
+
+    .button.primary {
+      background: #111111;
+      color: #ffffff;
+      border-color: #111111;
+    }
+
+    section {
+      max-width: var(--content-width);
+      margin-top: 0;
+      padding: 26px 0 30px;
+      background: transparent;
+      border: none;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    section:first-of-type {
+      border-top: none;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 14px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      margin: 14px 0;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      overflow-x: auto;
+      box-shadow: none;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.9em;
+    }
+
+    :not(pre)>code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: #f1f1ef;
+      color: #c2410c;
+      font-weight: 600;
+      white-space: normal;
+      line-height: 1.6;
+    }
+
+    .shortcut {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #f1f1ef;
+      color: #c2410c;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.9em;
+      font-weight: 600;
+      line-height: 1.6;
+      vertical-align: middle;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      margin: 16px 0;
+      font-size: 0.93rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f7f7f5;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .callout {
+      margin: 16px 0;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--callout-bg);
+    }
+
+    .callout.info {
+      background: #f7f7f5;
+    }
+
+    .callout.warn {
+      background: var(--warn-bg);
+      border-color: #ead9a3;
+    }
+
+    .callout.danger {
+      background: var(--danger-bg);
+      border-color: #efc5c5;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #ffffff;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #f1f1ef;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    details {
+      margin: 12px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 650;
+    }
+
+    details>div {
+      padding: 0 14px 14px;
+      color: var(--muted);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .checklist label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .copy-wrap {
+      position: relative;
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      cursor: pointer;
+      padding: 7px 10px;
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      color: var(--text);
+      background: #ffffff;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    .copy-button:hover {
+      background: #f7f7f5;
+    }
+
+    .copy-wrap pre {
+      padding-top: 44px;
+    }
+
+    footer {
+      max-width: var(--content-width);
+      margin-top: 18px;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--border);
+      text-align: left;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 920px) {
+      .layout {
+        display: block;
+      }
+
+      aside {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      main {
+        padding: 28px 18px 60px;
+      }
+
+      .grid,
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media print {
+
+      aside,
+      .hero-actions {
+        display: none;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      section,
+      .hero {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <div class="logo">📒</div>
+        <div>
+          <strong>claude.code dio.me</strong>
+          <span>anotações rápidas</span>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a href="#intro">👀 Visão geral</a>
+        <a href="#install-vscode">🧩 Instalar no VS Code</a>
+        <a href="#install-cli">💻 Instalar no CLI</a>
+        <a href="#cli">⌨️ CLI e help</a>
+        <a href="#models">🧠 Modelos</a>
+        <a href="#modes">🎛️ Modes</a>
+        <a href="#effort">⚙️ Efforts</a>
+        <a href="#bash">🖥️ Bash tradicional</a>
+        <a href="#commands">⚡ Comandos</a>
+        <a href="#custom-commands">🛠️ Comandos personalizados</a>
+        <a href="#skills">🧰 Skills</a>
+        <a href="#claude-md">📄 CLAUDE.md</a>
+        <a href="#agentes">🤖 Agentes</a>
+        <a href="#po-agent-prompt">🧑‍💼 Prompt de agente de P.O.</a>
+        <a href="#contexto">🧠 Contexto</a>
+        <a href="#tokens">🪙 Tokens e sessão</a>
+        <a href="#usage">📊 Usage</a>
+        <a href="#scaffolding-prompt">🏗️ Prompt de scaffolding</a>
+        <a href="#git-cheat-sheet">🌱 Git cheat sheet</a>
+        <a href="#workflows">🚀 Fluxos práticos</a>
+        <a href="#best-practices">✅ Boas práticas</a>
+        <a href="#checklist">📋 Checklist</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero" id="top">
+        <span class="eyebrow">📘 Guia de consulta</span>
+        <h1>resumo de uso claude.code dio.me</h1>
+        <p class="subtitle">
+          Material complementar em formato de documentação, com foco em instalação, uso no VS Code e CLI, modos,
+          comandos, sessões, usage e prompts prontos.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#install-cli">Começar</a>
+          <a class="button" href="#commands">Comandos</a>
+          <a class="button" href="#scaffolding-prompt">Prompt pronto</a>
+        </div>
+      </header>
+
+      <section id="intro">
+        <h2>1. Visão geral</h2>
+        <p><strong>Claude Code</strong> é uma ferramenta de desenvolvimento assistida por IA da Anthropic, criada para
+          trabalhar diretamente com projetos de software. Ele atua como um agente capaz de ler arquivos, entender o
+          contexto do repositório, editar código, executar comandos e ajudar em fluxos reais de desenvolvimento.</p>
+        <div class="grid">
+          <div class="card"><strong>📖 Entende o projeto</strong><span class="muted">Lê arquivos, pastas, diffs, logs e
+              instruções do projeto.</span></div>
+          <div class="card"><strong>✍️ Edita código</strong><span class="muted">Cria, modifica, refatora e documenta
+              arquivos.</span></div>
+          <div class="card"><strong>🧪 Executa comandos</strong><span class="muted">Pode rodar testes, builds, linters e
+              comandos Bash.</span></div>
+        </div>
+        <div class="callout info"><strong>Resumo:</strong> Claude Code combina terminal, IDE, contexto do projeto e
+          automação para acelerar tarefas de desenvolvimento com IA.</div>
+        <h3>Quando usar</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Objetivo</th>
+              <th>Exemplo de prompt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Entender um projeto</td>
+              <td><code>Explique a arquitetura deste repositório.</code></td>
+            </tr>
+            <tr>
+              <td>Corrigir bug</td>
+              <td><code>Investigue por que o checkout retorna erro 500.</code></td>
+            </tr>
+            <tr>
+              <td>Criar testes</td>
+              <td><code>Crie testes para este service seguindo o padrão atual.</code></td>
+            </tr>
+            <tr>
+              <td>Revisar código</td>
+              <td><code>Revise as mudanças atuais como code review.</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="install-vscode">
+        <h2>2. Como instalar no VS Code</h2>
+        <p>
+          A extensão do Claude Code permite usar a ferramenta integrada ao editor, com acesso ao arquivo aberto,
+          seleções de código e comandos da IDE.
+        </p>
+
+        <h3>Instalação pela aba de extensões</h3>
+        <ol class="steps">
+          <li>
+            <div>
+              <strong>Abra o VS Code.</strong>
+              <p class="muted">Use o editor já aberto na pasta do projeto ou abra uma nova janela.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Abra a aba de extensões.</strong>
+              <p class="muted">
+                No macOS, use <span class="shortcut">Cmd + Shift + X</span>. No Windows/Linux, use <span
+                  class="shortcut">Ctrl + Shift + X</span>.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Pesquise pela extensão.</strong>
+              <p class="muted">Digite <code>Claude Code</code> no campo de busca.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Instale a extensão oficial.</strong>
+              <p class="muted">Confirme que a extensão é da Anthropic antes de instalar.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Autentique sua conta.</strong>
+              <p class="muted">Abra um projeto e siga o fluxo de login quando o VS Code solicitar.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3>Command Palette</h3>
+        <p>Outra forma de acessar ações do Claude Code é pela Command Palette.</p>
+        <div class="grid two">
+          <div class="card">
+            <strong>macOS</strong>
+            <span class="shortcut">Cmd + Shift + P</span>
+          </div>
+          <div class="card">
+            <strong>Windows/Linux</strong>
+            <span class="shortcut">Ctrl + Shift + P</span>
+          </div>
+        </div>
+
+        <p>Depois, pesquise por comandos como:</p>
+        <pre><code>Claude Code: Open in New Tab
+Claude Code: Open in Terminal
+Claude Code: Show Logs
+Claude Code: Logout</code></pre>
+
+        <h3>Atalhos úteis</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Ação</th>
+              <th>macOS</th>
+              <th>Windows/Linux</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Abrir Command Palette</td>
+              <td><span class="shortcut">Cmd + Shift + P</span></td>
+              <td><span class="shortcut">Ctrl + Shift + P</span></td>
+            </tr>
+            <tr>
+              <td>Abrir extensões</td>
+              <td><span class="shortcut">Cmd + Shift + X</span></td>
+              <td><span class="shortcut">Ctrl + Shift + X</span></td>
+            </tr>
+            <tr>
+              <td>Inserir referência de arquivo/seleção</td>
+              <td><span class="shortcut">Option + K</span></td>
+              <td><span class="shortcut">Alt + K</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="install-cli">
+        <h2>3. Como instalar no CLI</h2>
+        <p>A CLI é o principal modo de uso para quem quer trabalhar diretamente no terminal, rodar comandos e integrar
+          Claude Code a scripts.</p>
+        <h3>Instalar no macOS/Linux</h3>
+        <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+        <h3>Iniciar Claude Code</h3>
+        <pre><code>claude</code></pre>
+        <h3>Login</h3>
+        <pre><code>claude auth login</code></pre>
+        <h3>Verificar autenticação</h3>
+        <pre><code>claude auth status</code></pre>
+        <h3>Logout</h3>
+        <pre><code>claude auth logout</code></pre>
+        <h3>Verificar versão</h3>
+        <pre><code>claude --version</code></pre>
+        <h3>Atualizar</h3>
+        <pre><code>claude update</code></pre>
+        <div class="callout warn"><strong>Dica para demo:</strong> antes do webinar, rode
+          <code>claude auth status</code> e <code>claude --version</code> para evitar surpresas durante a apresentação.
+        </div>
+      </section>
+
+      <section id="cli">
+        <h2>4. CLI e comando help</h2>
+        <p>Os comandos abaixo cobrem o fluxo básico de uso no terminal.</p>
+        <h3>Iniciar sessão interativa</h3>
+        <pre><code>claude</code></pre>
+        <h3>Iniciar com uma pergunta</h3>
+        <pre><code>claude "explique este projeto"</code></pre>
+        <h3>Modo não interativo</h3>
+        <pre><code>claude -p "explique a função de autenticação"</code></pre>
+        <h3>Pipe de conteúdo</h3>
+        <pre><code>cat logs.txt | claude -p "resuma os erros principais"</code></pre>
+        <h3>Continuar conversa recente</h3>
+        <pre><code>claude -c
+claude --continue</code></pre>
+        <h3>Retomar sessão</h3>
+        <pre><code>claude -r "auth-refactor"
+claude --resume "auth-refactor"</code></pre>
+        <h3>Help fora da sessão</h3>
+        <pre><code>claude --help</code></pre>
+        <h3>Help dentro da sessão</h3>
+        <pre><code>/help</code></pre>
+      </section>
+
+      <section id="models">
+        <h2>5. Modelos: Claude, Haiku, Sonnet e Opus</h2>
+        <p><strong>Claude</strong> é a família de modelos. Dentro dela, existem modelos com diferentes equilíbrios entre
+          velocidade, custo, qualidade e profundidade.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Perfil</th>
+              <th>Melhor para</th>
+              <th>Trade-off</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>⚡ Haiku</td>
+              <td>Rápido e econômico</td>
+              <td>Resumos simples, classificação, alto volume</td>
+              <td>Menos profundo</td>
+            </tr>
+            <tr>
+              <td>🎼 Sonnet</td>
+              <td>Equilibrado</td>
+              <td>Coding diário, testes, docs, refatoração</td>
+              <td>Melhor padrão geral</td>
+            </tr>
+            <tr>
+              <td>🧠 Opus</td>
+              <td>Mais poderoso</td>
+              <td>Arquitetura, bugs difíceis, planejamento complexo</td>
+              <td>Mais custo/latência</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Selecionar modelo</h3>
+        <pre><code>claude --model sonnet
+claude --model opus</code></pre>
+        <div class="callout info"><strong>Regra prática:</strong> use Sonnet como padrão, Opus para tarefas complexas e
+          Haiku para tarefas simples e rápidas.</div>
+      </section>
+
+      <section id="modes">
+        <h2>6. Modes: Plan Mode, Auto-accept Edits e Auto Mode</h2>
+        <p><strong>Modes</strong> controlam o nível de autonomia do Claude Code durante uma sessão: quando deve apenas
+          planejar, quando pode editar arquivos automaticamente e quando pode usar aprovações mais automáticas.</p>
+        <div class="grid">
+          <div class="card"><strong>🧭 Plan Mode</strong>
+            <p class="muted">Claude lê, investiga e propõe um plano antes de alterar arquivos ou executar ações de
+              impacto.</p>
+          </div>
+          <div class="card"><strong>✍️ Auto-accept Edits</strong>
+            <p class="muted">Edições de arquivos podem ser aceitas automaticamente, reduzindo confirmações repetitivas.
+            </p>
+          </div>
+          <div class="card"><strong>🤖 Auto Mode</strong>
+            <p class="muted">Tenta aprovar ações de baixo risco e pede confirmação para ações mais sensíveis.</p>
+          </div>
+        </div>
+        <h3>Comparativo rápido</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Mode</th>
+              <th>O que faz</th>
+              <th>Quando usar</th>
+              <th>Controle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Plan Mode</td>
+              <td>Analisa e cria plano antes de implementar.</td>
+              <td>Arquitetura, refatorações grandes e tarefas com risco.</td>
+              <td>Mais seguro</td>
+            </tr>
+            <tr>
+              <td>Auto-accept Edits</td>
+              <td>Aceita edições automaticamente.</td>
+              <td>Ajustes visuais, mudanças repetitivas e escopo claro.</td>
+              <td>Intermediário</td>
+            </tr>
+            <tr>
+              <td>Auto Mode</td>
+              <td>Automatiza aprovações de baixo risco.</td>
+              <td>Fluxos longos em projetos versionados e confiáveis.</td>
+              <td>Mais autônomo</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Como mudar entre modes</h3>
+        <div class="grid two">
+          <div class="card"><strong>Terminal / CLI</strong>
+            <pre><code>Shift + Tab</code></pre>
+            <p class="muted">Alterna entre modes disponíveis durante a sessão.</p>
+          </div>
+          <div class="card"><strong>VS Code / Desktop</strong>
+            <p class="muted">Use o seletor de mode na interface da sessão, próximo ao prompt ou permissões.</p>
+          </div>
+        </div>
+        <h3>Atalhos e comandos úteis</h3>
+        <pre><code>/plan
+claude --permission-mode plan
+claude --enable-auto-mode</code></pre>
+        <div class="callout warn"><strong>Boa prática:</strong> comece em <strong>Plan Mode</strong> quando a tarefa for
+          grande ou incerta. Depois de aprovar o plano, mude para modos mais autônomos.</div>
+      </section>
+
+      <section id="effort">
+        <h2>7. O que são Efforts?</h2>
+        <p><strong>Effort</strong> é o nível de esforço de raciocínio usado pelo Claude Code. Quanto maior o effort,
+          mais cuidadosa e profunda tende a ser a análise.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Effort</th>
+              <th>Use quando</th>
+              <th>Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>low</code></td>
+              <td>Tarefa simples e rápida</td>
+              <td>Explicar um arquivo pequeno</td>
+            </tr>
+            <tr>
+              <td><code>medium</code></td>
+              <td>Análise comum</td>
+              <td>Sugerir melhorias em componente</td>
+            </tr>
+            <tr>
+              <td><code>high</code></td>
+              <td>Mais precisão</td>
+              <td>Refatorar sem quebrar comportamento</td>
+            </tr>
+            <tr>
+              <td><code>xhigh</code></td>
+              <td>Problema complexo</td>
+              <td>Investigar bug intermitente</td>
+            </tr>
+            <tr>
+              <td><code>max</code></td>
+              <td>Máxima profundidade</td>
+              <td>Planejar migração grande</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Comandos</h3>
+        <pre><code>/effort
+/effort low
+/effort medium
+/effort high
+/effort xhigh
+/effort max
+/effort auto</code></pre>
+      </section>
+
+      <section id="bash">
+        <h2>8. Como executar comandos Bash tradicionais</h2>
+        <p>Claude Code pode executar comandos no terminal, normalmente pedindo autorização antes. Isso permite rodar
+          testes, builds, linters e inspeções do projeto.</p>
+        <h3>Exemplos</h3>
+        <pre><code>pwd
+ls
+git status
+npm install
+npm run dev
+npm run lint
+npm test
+npm run build
+docker compose up</code></pre>
+        <h3>Prompt pedindo execução</h3>
+        <pre><code>Execute `npm run lint` e corrija os erros encontrados.</code></pre>
+        <h3>Usar saída de Bash como contexto em skills</h3>
+        <pre><code>!`git diff HEAD`</code></pre>
+        <div class="callout danger"><strong>Atenção:</strong> revise comandos destrutivos antes de aprovar,
+          especialmente <code>rm -rf</code>, <code>sudo</code>, <code>git push --force</code> e comandos que alterem
+          permissões.</div>
+      </section>
+
+      <section id="commands">
+        <h2>9. O que são comandos?</h2>
+        <p>Comandos são instruções iniciadas com <code>/</code>. Eles controlam a sessão, consultam status, alteram
+          configurações e executam workflows.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Função</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/help</code></td>
+              <td>Mostra comandos disponíveis.</td>
+            </tr>
+            <tr>
+              <td><code>/usage</code></td>
+              <td>Mostra uso, custos, limites e estatísticas.</td>
+            </tr>
+            <tr>
+              <td><code>/cost</code></td>
+              <td>Alias de usage/custo.</td>
+            </tr>
+            <tr>
+              <td><code>/stats</code></td>
+              <td>Alias de estatísticas de uso.</td>
+            </tr>
+            <tr>
+              <td><code>/context</code></td>
+              <td>Mostra uso do contexto atual.</td>
+            </tr>
+            <tr>
+              <td><code>/compact</code></td>
+              <td>Resume a conversa para liberar contexto.</td>
+            </tr>
+            <tr>
+              <td><code>/clear</code></td>
+              <td>Inicia uma nova conversa.</td>
+            </tr>
+            <tr>
+              <td><code>/config</code></td>
+              <td>Abre configurações.</td>
+            </tr>
+            <tr>
+              <td><code>/status</code></td>
+              <td>Mostra versão, modelo, conta e estado.</td>
+            </tr>
+            <tr>
+              <td><code>/effort</code></td>
+              <td>Configura esforço de raciocínio.</td>
+            </tr>
+            <tr>
+              <td><code>/btw</code></td>
+              <td>Pergunta rápida fora do contexto principal.</td>
+            </tr>
+            <tr>
+              <td><code>/exit</code></td>
+              <td>Sai da CLI.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Comando vs prompt</h3>
+        <div class="grid two">
+          <div class="card"><strong>Prompt comum</strong>
+            <pre><code>Explique esse arquivo.</code></pre>
+          </div>
+          <div class="card"><strong>Comando</strong>
+            <pre><code>/context</code></pre>
+          </div>
+        </div>
+        <h3 id="btw">Comando /btw</h3>
+        <p>O <code>/btw</code> permite fazer uma pergunta rápida sem adicionar aquela pergunta ao contexto principal da
+          conversa.</p>
+        <pre><code>/btw qual comando lista branches no Git?</code></pre>
+        <div class="grid two">
+          <div class="card"><strong>✅ Use para</strong>
+            <p class="muted">Dúvidas rápidas, conceitos, comandos pequenos ou perguntas paralelas.</p>
+          </div>
+          <div class="card"><strong>❌ Evite para</strong>
+            <p class="muted">Decisões que precisam influenciar a tarefa principal.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="custom-commands">
+        <h2>10. Como criar comandos personalizados</h2>
+        <p>No Claude Code, comandos personalizados podem ser criados por meio de <strong>skills</strong>. Uma skill é um
+          arquivo Markdown com instruções reutilizáveis, que pode ser chamada como um comando.</p>
+        <h3>Estrutura recomendada</h3>
+        <pre><code>.claude/
+└── skills/
+    └── summarize-changes/
+        └── SKILL.md</code></pre>
+        <h3>Criar a pasta</h3>
+        <pre><code>mkdir -p .claude/skills/summarize-changes</code></pre>
+        <h3>Exemplo de SKILL.md</h3>
+        <pre><code>---
+name: summarize-changes
+description: Resume as mudanças não commitadas e aponta riscos.
+---
+
+# Summarize Changes
+
+## Mudanças atuais
+
+!`git diff HEAD`
+
+## Instruções
+
+Resuma as mudanças em até 5 bullets.
+
+Depois liste:
+1. riscos;
+2. arquivos importantes;
+3. sugestões de teste;
+4. sugestão de mensagem de commit.</code></pre>
+        <h3>Chamar a skill</h3>
+        <pre><code>/summarize-changes</code></pre>
+      </section>
+
+      <section id="skills">
+        <h2>11. Skills</h2>
+        <p>
+          Uma <strong>skill</strong> é um pacote reutilizável de instruções, arquivos e, opcionalmente, scripts que
+          ensina o Claude Code a executar uma tarefa específica seguindo um processo padronizado.
+        </p>
+
+        <div class="callout info">
+          <strong>Em uma frase:</strong> skill é um workflow reutilizável. Você cria uma vez e chama sempre que precisar
+          repetir aquele processo com consistência.
+        </div>
+
+        <div class="grid">
+          <div class="card"><strong>📋 Processo repetível</strong><span class="muted">Transforma tarefas recorrentes em
+              um fluxo documentado e fácil de reutilizar.</span></div>
+          <div class="card"><strong>🎯 Instruções específicas</strong><span class="muted">Define exatamente como Claude
+              deve agir, validar e entregar o resultado.</span></div>
+          <div class="card"><strong>🧩 Recursos extras</strong><span class="muted">Pode incluir referências, templates,
+              assets e scripts auxiliares.</span></div>
+        </div>
+
+        <h3>O que é uma skill?</h3>
+        <p>
+          Uma skill é como um pequeno “manual operacional” para o Claude. Ela descreve quando deve ser usada, quais
+          passos seguir, quais padrões respeitar e qual formato de saída entregar. Isso evita repetir prompts longos
+          toda vez que você precisar executar a mesma tarefa.
+        </p>
+
+        <h3>Quando utilizar skills?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Situação</th>
+              <th>Por que usar uma skill?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tarefa recorrente</td>
+              <td>Você quer repetir o mesmo processo várias vezes sem reescrever o prompt.</td>
+            </tr>
+            <tr>
+              <td>Workflow com vários passos</td>
+              <td>A skill guarda a ordem correta das etapas e reduz esquecimento.</td>
+            </tr>
+            <tr>
+              <td>Padrão do time</td>
+              <td>Garante que revisões, documentos, testes ou relatórios sigam o mesmo formato.</td>
+            </tr>
+            <tr>
+              <td>Uso de templates</td>
+              <td>A skill pode carregar modelos de saída, exemplos e referências.</td>
+            </tr>
+            <tr>
+              <td>Automação com scripts</td>
+              <td>Quando há tarefas determinísticas, a skill pode incluir scripts para executar.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Skill vs agente</h3>
+        <div class="grid two">
+          <div class="card"><strong>Skill</strong>
+            <p class="muted">Melhor para processos, checklists, templates e workflows reutilizáveis.</p>
+          </div>
+          <div class="card"><strong>Agente</strong>
+            <p class="muted">Melhor para papéis especializados, como revisor, P.O., test writer ou analista de
+              segurança.</p>
+          </div>
+        </div>
+
+        <h3>Como criar uma skill</h3>
+        <p>
+          No Claude Code, uma skill normalmente fica dentro de <code>.claude/skills/</code>, com um arquivo principal
+          chamado <code>SKILL.md</code>. Esse arquivo contém a descrição da skill e as instruções que Claude deve
+          seguir.
+        </p>
+
+        <pre><code>.claude/
+└── skills/
+    └── nome-da-skill/
+        └── SKILL.md</code></pre>
+
+        <h3>Passo a passo rápido</h3>
+        <ol class="steps">
+          <li>
+            <div>
+              <strong>Escolha uma tarefa recorrente.</strong>
+              <p class="muted">Procure algo que você faz várias vezes e que vale a pena padronizar.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Dê um nome curto para a skill.</strong>
+              <p class="muted">Exemplos: <code>review-pr</code>, <code>generate-tests</code> ou
+                <code>summarize-changes</code>.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Crie a pasta da skill.</strong>
+              <p class="muted">Ela deve ficar dentro de <code>.claude/skills/</code>.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Crie o arquivo principal.</strong>
+              <p class="muted">O arquivo de entrada deve se chamar <code>SKILL.md</code>.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Escreva uma descrição clara.</strong>
+              <p class="muted">Explique quando Claude deve usar essa skill e qual problema ela resolve.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Adicione instruções e formato de saída.</strong>
+              <p class="muted">Inclua regras, passos, exemplos e o padrão esperado da resposta.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Teste em uma tarefa real.</strong>
+              <p class="muted">Use a skill, observe o resultado e ajuste até o comportamento ficar previsível.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3>Comandos para criar a estrutura</h3>
+        <pre><code>mkdir -p .claude/skills/review-pr
+touch .claude/skills/review-pr/SKILL.md</code></pre>
+
+        <h3>Exemplo de skill</h3>
+        <pre><code>---
+name: review-pr
+description: Revisa mudanças de código antes de commit ou pull request. Use quando o usuário pedir revisão de diff, revisão de PR, análise de riscos, sugestões de melhoria ou checklist antes de commitar.
+---
+
+# Review PR
+
+Você é responsável por revisar as mudanças atuais do projeto como se estivesse fazendo um code review.
+
+## Contexto inicial
+
+Use o diff atual como base da análise:
+
+!`git diff HEAD`
+
+## Processo
+
+1. Entenda o objetivo das mudanças.
+2. Identifique arquivos mais importantes.
+3. Procure bugs, riscos, inconsistências e problemas de manutenção.
+4. Verifique se faltam testes.
+5. Sugira comandos de validação.
+6. Sugira uma mensagem de commit.
+
+## Saída esperada
+
+Use este formato:
+
+### Resumo
+- O que mudou em até 5 bullets.
+
+### Riscos encontrados
+| Severidade | Arquivo | Problema | Sugestão |
+|---|---|---|---|
+
+### Testes sugeridos
+- Lista de testes ou comandos recomendados.
+
+### Mensagem de commit sugerida
+`tipo: descrição curta`</code></pre>
+
+        <h3>Como usar a skill</h3>
+        <p>Depois de criada, você pode chamar a skill pelo nome dentro do Claude Code:</p>
+        <pre><code>/review-pr</code></pre>
+
+        <p>Ou pedir em linguagem natural:</p>
+        <pre><code>Use a skill review-pr para revisar minhas mudanças atuais.</code></pre>
+
+        <div class="callout warn">
+          <strong>Boa prática:</strong> mantenha skills pequenas e específicas. Uma skill focada em “revisar PR” tende a
+          funcionar melhor do que uma skill genérica que tenta revisar, testar, documentar e deployar tudo ao mesmo
+          tempo.
+        </div>
+      </section>
+
+      <section id="claude-md">
+        <h2>12. CLAUDE.md</h2>
+        <p>
+          O <strong>CLAUDE.md</strong> é um arquivo Markdown de instruções que fica no projeto e é carregado pelo Claude
+          Code no início das sessões. Ele serve para explicar como Claude deve trabalhar naquele repositório: stack,
+          comandos, padrões, convenções, arquitetura, regras de segurança e preferências do time.
+        </p>
+
+        <div class="callout info">
+          <strong>Em uma frase:</strong> o <code>CLAUDE.md</code> é a memória do Claude dentro do projeto — um lugar
+          para registrar instruções persistentes que não precisam ser repetidas a cada conversa.
+        </div>
+
+        <div class="grid">
+          <div class="card"><strong>🧠 Memória do projeto</strong><span class="muted">Guarda padrões, decisões e
+              instruções que Claude deve lembrar em novas sessões.</span></div>
+          <div class="card"><strong>📐 Convenções do time</strong><span class="muted">Define estilo de código, estrutura
+              de pastas, comandos de teste, build e lint.</span></div>
+          <div class="card"><strong>🛡️ Guardrails</strong><span class="muted">Registra o que Claude deve ou não fazer,
+              como evitar secrets, comandos destrutivos ou mudanças fora de escopo.</span></div>
+        </div>
+
+        <h3>Por que ele é importante?</h3>
+        <p>
+          Sem um <code>CLAUDE.md</code>, Claude precisa descobrir ou perguntar várias coisas toda vez: como rodar o
+          projeto, qual padrão de componentes usar, como nomear arquivos, quais comandos validar e quais decisões já
+          foram tomadas. Com o arquivo, essas instruções viram contexto fixo do projeto.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Sem CLAUDE.md</th>
+              <th>Com CLAUDE.md</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Claude precisa inferir padrões pelo código.</td>
+              <td>Claude já começa com regras e convenções explícitas.</td>
+            </tr>
+            <tr>
+              <td>Você repete comandos e instruções em toda sessão.</td>
+              <td>Comandos importantes ficam documentados uma vez.</td>
+            </tr>
+            <tr>
+              <td>Maior chance de decisões inconsistentes.</td>
+              <td>Maior consistência entre sessões e pessoas do time.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Equivalente ao AGENTS.md</h3>
+        <p>
+          Em outras ferramentas de agentes de código, é comum existir um arquivo chamado <code>AGENTS.md</code> para
+          orientar como o agente deve trabalhar no projeto. No Claude Code, o equivalente mais importante é o
+          <code>CLAUDE.md</code>.
+        </p>
+
+        <div class="callout warn">
+          <strong>Adendo:</strong> pense no <code>CLAUDE.md</code> como o “manual do projeto para o Claude”. Ele cumpre
+          um papel parecido com <code>AGENTS.md</code>, <code>.cursorrules</code> ou arquivos de instruções usados por
+          outras ferramentas, mas seguindo a convenção do Claude Code.
+        </div>
+
+        <h3>Onde criar?</h3>
+        <p>
+          O local mais comum é na raiz do projeto:
+        </p>
+        <pre><code>meu-projeto/
+├── CLAUDE.md
+├── package.json
+├── src/
+└── README.md</code></pre>
+
+        <p>
+          Você também pode ter instruções mais específicas em subpastas quando um módulo precisa de regras próprias.
+        </p>
+
+        <h3>Como criar com /init</h3>
+        <p>
+          Dentro de uma sessão do Claude Code, use <code>/init</code>. Esse comando analisa o projeto e cria uma
+          proposta inicial de <code>CLAUDE.md</code> com informações como comandos de build, testes, stack e convenções
+          detectadas.
+        </p>
+
+        <pre><code># 1. Entre na pasta do projeto
+cd meu-projeto
+
+# 2. Abra o Claude Code
+claude
+
+# 3. Dentro da sessão, rode
+/init</code></pre>
+
+        <div class="callout info">
+          <strong>Boa prática:</strong> use o <code>/init</code> como ponto de partida, mas revise o arquivo
+          manualmente. O melhor <code>CLAUDE.md</code> combina o que Claude detecta no código com decisões humanas do
+          time.
+        </div>
+
+        <h3>O que colocar em um CLAUDE.md?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Seção</th>
+              <th>Exemplo de conteúdo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Stack</td>
+              <td>Next.js, TypeScript, Tailwind, Node, banco de dados e bibliotecas principais.</td>
+            </tr>
+            <tr>
+              <td>Comandos</td>
+              <td><code>npm run dev</code>, <code>npm test</code>, <code>npm run lint</code>,
+                <code>npm run build</code>.</td>
+            </tr>
+            <tr>
+              <td>Padrões</td>
+              <td>Estrutura de pastas, padrão de componentes, services, hooks, nomes e imports.</td>
+            </tr>
+            <tr>
+              <td>Regras</td>
+              <td>Não alterar API pública sem pedir, não commitar secrets, pedir plano antes de refatorações grandes.
+              </td>
+            </tr>
+            <tr>
+              <td>Fluxos</td>
+              <td>Como criar feature, testar, revisar diff e preparar commit.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Template simples</h3>
+        <pre><code># CLAUDE.md
+
+## Projeto
+Este projeto é um app Next.js com TypeScript e Tailwind CSS.
+
+## Comandos principais
+- Instalar dependências: npm install
+- Rodar localmente: npm run dev
+- Rodar lint: npm run lint
+- Rodar build: npm run build
+- Rodar testes: npm test
+
+## Padrões de código
+- Use TypeScript em modo strict.
+- Prefira componentes pequenos e reutilizáveis.
+- Mantenha lógica de negócio em src/lib.
+- Mantenha componentes visuais em src/components.
+
+## Regras para Claude
+- Antes de mudanças grandes, proponha um plano.
+- Não altere contratos públicos sem pedir confirmação.
+- Não adicione dependências novas sem justificar.
+- Nunca exponha tokens, chaves ou secrets.
+- Depois de editar, sugira comandos de validação.</code></pre>
+
+        <h3>Checklist do CLAUDE.md</h3>
+        <div class="checklist">
+          <label><input type="checkbox" /> Rodei <code>/init</code> para gerar uma base inicial.</label>
+          <label><input type="checkbox" /> Revisei stack, comandos e estrutura do projeto.</label>
+          <label><input type="checkbox" /> Adicionei regras específicas do time.</label>
+          <label><input type="checkbox" /> Adicionei guardrails de segurança.</label>
+          <label><input type="checkbox" /> Commitei o <code>CLAUDE.md</code> junto com o projeto.</label>
+        </div>
+      </section>
+
+      <section id="agentes">
+        <h2>13. Agentes</h2>
+        <p>
+          Um <strong>agente</strong> é um especialista configurado para executar uma missão específica dentro do Claude
+          Code. Em vez de pedir tudo para o Claude principal, você pode criar agentes com papéis claros, como revisor de
+          código, criador de testes, documentador, analista de segurança ou especialista em performance.
+        </p>
+
+        <div class="callout info">
+          <strong>Em uma frase:</strong> criar um agente é definir uma missão, um contexto de atuação e um conjunto de
+          regras para que Claude delegue uma tarefa a um especialista.
+        </div>
+
+        <div class="grid">
+          <div class="card"><strong>🎯 Missão clara</strong><span class="muted">O agente sabe exatamente qual problema
+              deve resolver e qual saída entregar.</span></div>
+          <div class="card"><strong>🧠 Contexto próprio</strong><span class="muted">Subagentes podem trabalhar com seu
+              próprio contexto, mantendo a conversa principal mais limpa.</span></div>
+          <div class="card"><strong>⚡ Reuso</strong><span class="muted">Você cria uma vez e reutiliza sempre que aquele
+              tipo de tarefa aparecer.</span></div>
+        </div>
+
+        <h3>O que é um agente?</h3>
+        <p>
+          No Claude Code, agentes personalizados são geralmente chamados de <strong>subagents</strong>. Eles são
+          definidos em arquivos Markdown com um frontmatter em YAML e instruções detalhadas. Claude pode usar esses
+          agentes para delegar tarefas específicas, especialmente quando a tarefa pede um perfil especializado ou quando
+          faz sentido isolar a análise.
+        </p>
+
+        <h3>Vantagens de criar um agente</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Vantagem</th>
+              <th>Por que ajuda?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Define uma missão</td>
+              <td>O agente tem um papel explícito, como “revisar segurança” ou “gerar testes”, evitando prompts
+                genéricos.</td>
+            </tr>
+            <tr>
+              <td>Padroniza entregas</td>
+              <td>Você pode definir formato de resposta, checklist, critérios de qualidade e limites de atuação.</td>
+            </tr>
+            <tr>
+              <td>Reduz repetição</td>
+              <td>Não é preciso repetir sempre o mesmo prompt longo para tarefas recorrentes.</td>
+            </tr>
+            <tr>
+              <td>Melhora foco</td>
+              <td>O agente trabalha como especialista em uma tarefa, sem tentar resolver tudo ao mesmo tempo.</td>
+            </tr>
+            <tr>
+              <td>Protege o contexto principal</td>
+              <td>Tarefas de exploração, revisão ou análise podem ser delegadas sem poluir tanto a conversa principal.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Quando criar um agente?</h3>
+        <div class="grid two">
+          <div class="card"><strong>✅ Crie quando...</strong>
+            <p class="muted">A tarefa se repete, exige um papel especializado, precisa de checklist fixo ou tem um
+              formato de saída bem definido.</p>
+          </div>
+          <div class="card"><strong>❌ Evite quando...</strong>
+            <p class="muted">A tarefa é única, simples, muito aberta ou ainda não tem processo claro. Nesse caso, um
+              prompt comum costuma bastar.</p>
+          </div>
+        </div>
+
+        <h3>Exemplos de bons agentes</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Agente</th>
+              <th>Missão</th>
+              <th>Quando usar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>code-reviewer</code></td>
+              <td>Revisar mudanças procurando bugs, inconsistências e riscos.</td>
+              <td>Antes de abrir PR ou fazer commit.</td>
+            </tr>
+            <tr>
+              <td><code>test-writer</code></td>
+              <td>Criar testes seguindo padrões existentes do projeto.</td>
+              <td>Depois de criar ou alterar uma feature.</td>
+            </tr>
+            <tr>
+              <td><code>security-reviewer</code></td>
+              <td>Procurar riscos de segurança, secrets, validação e autorização.</td>
+              <td>Antes de publicar fluxos sensíveis.</td>
+            </tr>
+            <tr>
+              <td><code>docs-writer</code></td>
+              <td>Transformar implementação em documentação clara.</td>
+              <td>Após finalizar uma feature ou módulo.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Guia rápido para criar um agente</h3>
+        <ol class="steps">
+          <li>Defina a <strong>missão</strong>: o que esse agente deve resolver?</li>
+          <li>Defina o <strong>escopo</strong>: onde ele pode atuar e o que deve evitar?</li>
+          <li>Defina as <strong>ferramentas</strong>: ele pode ler arquivos, editar, rodar Bash ou apenas analisar?</li>
+          <li>Defina o <strong>formato de saída</strong>: tabela, checklist, plano, diff, resumo ou relatório.</li>
+          <li>Teste com uma tarefa real e ajuste as instruções até ficar previsível.</li>
+        </ol>
+
+        <h3>Criar um agente com /agents</h3>
+        <p>
+          A forma mais simples de começar é abrir a interface de agentes dentro do Claude Code com <code>/agents</code>.
+          A partir dela, você pode criar um novo agente, escolher se ele será pessoal ou do projeto, definir nome,
+          descrição, ferramentas e instruções.
+        </p>
+        <pre><code># 1. Entre na pasta do projeto
+cd meu-projeto
+
+# 2. Abra o Claude Code
+claude
+
+# 3. Dentro da sessão, abra a interface de agentes
+/agents</code></pre>
+
+        <h3>Fluxo recomendado no /agents</h3>
+        <ol class="steps">
+          <li>Rode <code>/agents</code> dentro do Claude Code.</li>
+          <li>Escolha <strong>Create new agent</strong>.</li>
+          <li>Escolha o local: <strong>Project</strong> para versionar no repositório ou <strong>Personal</strong> para
+            usar em vários projetos.</li>
+          <li>Dê um nome curto e claro, como <code>code-reviewer</code> ou <code>test-writer</code>.</li>
+          <li>Escreva uma descrição dizendo quando Claude deve usar esse agente.</li>
+          <li>Defina as instruções da missão, critérios de qualidade e formato de resposta.</li>
+          <li>Salve e teste chamando Claude para usar esse agente em uma tarefa real.</li>
+        </ol>
+
+        <h3>Onde os agentes ficam?</h3>
+        <p>
+          Agentes podem ser criados como arquivos Markdown em pastas específicas. Use agentes de projeto quando a
+          configuração deve ser compartilhada com o time, e agentes pessoais quando forem preferências suas.
+        </p>
+        <pre><code># Agente do projeto, versionado no repositório
+.claude/agents/nome-do-agente.md
+
+# Agente pessoal, disponível em vários projetos
+~/.claude/agents/nome-do-agente.md</code></pre>
+
+        <h3>Template simples de agente</h3>
+        <pre><code>---
+name: code-reviewer
+description: Use este agente para revisar mudanças de código antes de commit ou PR.
+tools: Read, Grep, Glob, Bash
+---
+
+# Code Reviewer
+
+Você é um revisor de código cuidadoso.
+
+## Missão
+Revisar mudanças procurando bugs, riscos, inconsistências, problemas de legibilidade e falta de testes.
+
+## Processo
+1. Entenda o objetivo da mudança.
+2. Analise os arquivos alterados.
+3. Procure problemas de comportamento, segurança e manutenção.
+4. Sugira melhorias práticas.
+5. Indique comandos de validação quando fizer sentido.
+
+## Saída esperada
+Use este formato:
+
+| Severidade | Arquivo | Problema | Sugestão |
+|---|---|---|---|
+
+Finalize com um resumo curto e uma lista de próximos passos.</code></pre>
+
+        <h3>Como pedir para Claude usar um agente</h3>
+        <pre><code>Use o agente code-reviewer para revisar as mudanças atuais.
+
+Use o agente test-writer para criar testes para @src/lib/cart.ts.
+
+Delegue para um agente de segurança revisar esse fluxo de autenticação.</code></pre>
+
+        <div class="callout warn">
+          <strong>Boa prática:</strong> agentes funcionam melhor quando têm uma missão pequena e objetiva. Evite criar
+          um “super agente” que faz tudo; prefira vários agentes especialistas.
+        </div>
+      </section>
+
+      <section id="po-agent-prompt">
+        <h2>14. Prompt de agente de P.O.</h2>
+        <p>
+          Prompt pronto para criar um agente de Product Owner do projeto Mandáí, responsável por transformar ideias e
+          requisitos em user stories claras, estruturadas e prontas para implementação.
+        </p>
+
+        <div class="callout info">
+          <strong>Como usar:</strong> copie o prompt abaixo e use como instrução base ao criar um agente via
+          <code>/agents</code>, ou salve como arquivo em <code>.claude/agents/product-owner.md</code>.
+        </div>
+
+        <div class="copy-wrap">
+          <button class="copy-button" onclick="copyPoAgentPrompt(this)">Copiar prompt</button>
+          <pre><code id="po-agent-prompt-code">Você é o Product Owner do projeto Mandáí — um app de delivery em construção como demonstração na série de mentorias DIO PRO.
+
+Sua função é escrever user stories claras, estruturadas e prontas pra serem implementadas pelo time de desenvolvimento.
+
+PADRÃO OBRIGATÓRIO PARA TODA USER STORY:
+
+# US-XX: [Título da feature]
+
+**Como** [tipo de usuário],
+**eu quero** [ação ou funcionalidade],
+**para que** [benefício ou valor de negócio].
+
+## Critérios de aceite
+
+- [ ] Critério 1
+- [ ] Critério 2
+- [ ] Critério 3
+
+## Notas técnicas
+
+- Detalhes relevantes pra implementação (componentes, dados, integrações)
+
+## Fora de escopo
+
+- O que NÃO faz parte dessa user story (pra evitar scope creep)
+
+ONDE SALVAR:
+
+Salve cada user story como um arquivo markdown em `/docs/user-stories/`, nomeado como `US-XX-&lt;slug-do-titulo&gt;.md` (numere sequencialmente a partir de US-01). Crie o diretório se ainda não existir.
+
+REGRAS:
+
+- Sempre numere a user story sequencialmente (US-01, US-02, etc).
+- Mantenha cada user story focada em UM objetivo claro.
+- Use linguagem simples, sem jargão técnico desnecessário.
+- Se a descrição funcional fornecida estiver incompleta, faça perguntas antes de escrever a user story.</code></pre>
+        </div>
+
+        <h3>Missão do agente</h3>
+        <p>
+          O agente deve atuar como P.O. do projeto, organizando requisitos em user stories implementáveis, com critérios
+          de aceite claros e escopo bem delimitado.
+        </p>
+
+        <h3>Quando usar</h3>
+        <div class="grid two">
+          <div class="card"><strong>✅ Use quando...</strong>
+            <p class="muted">Você tiver uma ideia de feature e quiser transformar em uma user story pronta para
+              desenvolvimento.</p>
+          </div>
+          <div class="card"><strong>✅ Use também quando...</strong>
+            <p class="muted">Precisar quebrar uma feature grande em histórias menores, sequenciais e com escopo
+              controlado.</p>
+          </div>
+        </div>
+
+        <h3>Exemplo de pedido para o agente</h3>
+        <pre><code>Use o agente de P.O. para criar uma user story da feature de listagem de restaurantes do Mandáí.</code></pre>
+      </section>
+
+      <section id="contexto">
+        <h2>15. Contexto</h2>
+        <p>
+          <strong>Contexto</strong> é o conjunto de informações que Claude Code consegue considerar enquanto trabalha
+          com você em uma sessão. Ele funciona como a “memória de trabalho” da conversa.
+        </p>
+
+        <div class="grid">
+          <div class="card"><strong>💬 Conversa</strong><span class="muted">Prompts, respostas, decisões e instruções
+              dadas durante a sessão.</span></div>
+          <div class="card"><strong>📁 Projeto</strong><span class="muted">Arquivos lidos, trechos de código, diffs,
+              logs e estruturas do repositório.</span></div>
+          <div class="card"><strong>🛠️ Execuções</strong><span class="muted">Resultados de comandos, testes, builds e
+              ferramentas usadas pelo Claude Code.</span></div>
+        </div>
+
+        <div class="callout info">
+          <strong>Ideia principal:</strong> quanto melhor o contexto, melhores tendem a ser as respostas. Mas contexto
+          demais, bagunçado ou antigo pode atrapalhar a precisão.
+        </div>
+
+        <h3>O que são turnos?</h3>
+        <p>
+          Um <strong>turno</strong> é cada troca dentro da conversa. Quando você envia uma mensagem, isso é um turno do
+          usuário. Quando Claude responde, isso é um turno do assistente. Em uma sessão longa, o contexto é formado por
+          uma sequência desses turnos, somada aos arquivos lidos, comandos executados e resultados retornados pelas
+          ferramentas.
+        </p>
+
+        <div class="grid two">
+          <div class="card"><strong>👤 Turno do usuário</strong>
+            <p class="muted">É quando você envia uma instrução, pergunta, correção, arquivo ou decisão para Claude Code.
+            </p>
+          </div>
+          <div class="card"><strong>🤖 Turno do Claude</strong>
+            <p class="muted">É quando Claude responde, propõe plano, edita arquivos, pede confirmação ou interpreta
+              resultados.</p>
+          </div>
+        </div>
+
+        <h3>Como os turnos funcionam na prática?</h3>
+        <p>
+          Claude Code usa os turnos anteriores para entender o objetivo atual. Por isso, se você pediu um plano, aprovou
+          uma abordagem e depois pediu a implementação, Claude tenta considerar essa sequência como parte do mesmo
+          trabalho.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Turno</th>
+              <th>Exemplo</th>
+              <th>Como afeta o contexto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Usuário</td>
+              <td><code>Analise o fluxo de autenticação.</code></td>
+              <td>Define o objetivo inicial.</td>
+            </tr>
+            <tr>
+              <td>2. Claude</td>
+              <td>Explica arquivos, riscos e propõe plano.</td>
+              <td>Adiciona hipóteses e decisões temporárias.</td>
+            </tr>
+            <tr>
+              <td>3. Usuário</td>
+              <td><code>Implemente apenas a etapa 1.</code></td>
+              <td>Refina o escopo e limita a ação.</td>
+            </tr>
+            <tr>
+              <td>4. Claude</td>
+              <td>Edita arquivos e roda testes.</td>
+              <td>Adiciona mudanças, resultados e próximos passos.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn">
+          <strong>Importante:</strong> quanto mais turnos a sessão acumula, mais informações entram na memória de
+          trabalho. Isso ajuda na continuidade, mas também pode trazer ruído se a conversa mudar muito de direção.
+        </div>
+
+        <h3>O que entra no contexto?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Fonte</th>
+              <th>Exemplo</th>
+              <th>Impacto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mensagens da conversa</td>
+              <td>Objetivo, restrições, decisões e próximos passos.</td>
+              <td>Ajuda Claude a manter continuidade.</td>
+            </tr>
+            <tr>
+              <td>Arquivos do projeto</td>
+              <td><code>@src/app/page.tsx</code>, configs, componentes e services.</td>
+              <td>Ajuda Claude a entender a implementação real.</td>
+            </tr>
+            <tr>
+              <td>Comandos executados</td>
+              <td><code>npm test</code>, <code>npm run build</code>, <code>git diff</code>.</td>
+              <td>Ajuda Claude a reagir a erros e validar mudanças.</td>
+            </tr>
+            <tr>
+              <td>Instruções do projeto</td>
+              <td><code>CLAUDE.md</code>, padrões de código e regras internas.</td>
+              <td>Ajuda Claude a seguir convenções.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>O que é o comando /context?</h3>
+        <p>
+          O <code>/context</code> mostra informações sobre o uso do contexto atual da sessão. Ele é útil para entender
+          se a conversa está ficando grande demais, se muitos arquivos foram carregados ou se vale a pena compactar
+          antes de continuar.
+        </p>
+        <pre><code>/context</code></pre>
+
+        <h3>Quando usar /context?</h3>
+        <div class="grid two">
+          <div class="card"><strong>Antes de uma tarefa grande</strong>
+            <p class="muted">Verifique se a sessão ainda tem espaço e clareza para uma nova etapa.</p>
+          </div>
+          <div class="card"><strong>Depois de muitos arquivos/logs</strong>
+            <p class="muted">Confira se a conversa não ficou carregada demais com informações antigas.</p>
+          </div>
+          <div class="card"><strong>Antes de refatorações</strong>
+            <p class="muted">Garanta que Claude ainda tem o contexto correto do plano e das decisões.</p>
+          </div>
+          <div class="card"><strong>Quando a resposta piorar</strong>
+            <p class="muted">Se Claude parecer confuso, o contexto pode estar poluído ou longo demais.</p>
+          </div>
+        </div>
+
+        <h3>Como limpar o contexto</h3>
+        <p>
+          Para começar uma conversa nova, use <code>/clear</code>. Isso limpa o histórico da sessão atual e ajuda quando
+          você quer mudar totalmente de assunto ou recomeçar com um objetivo novo.
+        </p>
+        <pre><code>/clear</code></pre>
+
+        <div class="callout warn">
+          <strong>Use /clear quando:</strong> terminou uma tarefa, vai começar outra sem relação, o Claude ficou preso
+          em uma hipótese errada ou você quer evitar que decisões antigas influenciem o próximo passo.
+        </div>
+
+        <h3>Como compactar o contexto</h3>
+        <p>
+          Para manter a continuidade sem carregar todo o histórico detalhado, use <code>/compact</code>. Ele resume a
+          conversa, preservando as partes importantes para seguir trabalhando.
+        </p>
+        <pre><code>/compact</code></pre>
+
+        <p>Também dá para orientar o que deve ser preservado:</p>
+        <pre><code>/compact preserve decisões técnicas, arquivos alterados, bugs encontrados e próximos passos</code></pre>
+
+        <h3>Quando compactar?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Situação</th>
+              <th>O que fazer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A conversa ficou longa, mas a tarefa continua.</td>
+              <td>Use <code>/compact</code>.</td>
+            </tr>
+            <tr>
+              <td>Você já decidiu a arquitetura e vai iniciar implementação.</td>
+              <td>Use <code>/compact preserve plano aprovado e decisões</code>.</td>
+            </tr>
+            <tr>
+              <td>Muitos logs ou erros antigos estão no histórico.</td>
+              <td>Use <code>/compact</code> para reduzir ruído.</td>
+            </tr>
+            <tr>
+              <td>Vai mudar totalmente de tarefa.</td>
+              <td>Prefira <code>/clear</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Regra prática</h3>
+        <div class="callout info">
+          <strong>Compacte</strong> quando quiser continuar a mesma tarefa com menos ruído. <strong>Limpe</strong>
+          quando quiser começar uma tarefa nova do zero.
+        </div>
+      </section>
+
+      <section id="tokens">
+        <h2>16. Tokens e sessão</h2>
+        <h3>Tokens</h3>
+        <p>Tokens são unidades de texto processadas pelo modelo. Podem representar palavras, partes de palavras,
+          símbolos, trechos de código, espaços e pontuação.</p>
+        <h3>O que consome tokens?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Consome tokens?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prompt do usuário</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Resposta do Claude</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Arquivos lidos</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Histórico da sessão</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Saída de comandos Bash</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Diffs e logs</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Skills carregadas</td>
+              <td>✅</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Contexto</h3>
+        <p>Contexto é tudo que Claude Code consegue considerar naquele momento: mensagens, arquivos, resultados de
+          comandos, instruções do projeto, decisões anteriores e skills carregadas.</p>
+        <h3>Sessão</h3>
+        <p>Sessão é uma conversa de trabalho com histórico, objetivo, arquivos lidos, comandos executados, decisões e
+          edições propostas.</p>
+        <h3>Comandos úteis</h3>
+        <pre><code>/context
+/compact
+/clear
+claude -c
+claude --resume "nome-ou-id-da-sessao"</code></pre>
+      </section>
+
+      <section id="usage">
+        <h2>17. Como verificar o usage</h2>
+        <p>O usage ajuda a acompanhar consumo, custo, limites e estatísticas da sessão.</p>
+        <h3>Comando principal</h3>
+        <pre><code>/usage</code></pre>
+        <h3>Aliases</h3>
+        <pre><code>/cost
+/stats</code></pre>
+        <h3>Complementares</h3>
+        <pre><code>/context
+/status</code></pre>
+        <div class="callout info"><strong>Roteiro para mostrar em aula:</strong> primeiro rode <code>/status</code>,
+          depois <code>/context</code> e por fim <code>/usage</code>.</div>
+      </section>
+
+      <section id="scaffolding-prompt">
+        <h2>18. Prompt de scaffolding</h2>
+        <p>Prompt pronto para usar em uma primeira interação com Claude Code, focado em criar apenas o scaffold de um
+          app Next.js sem implementar features de delivery ainda.</p>
+        <div class="callout info"><strong>Como usar:</strong> copie o prompt abaixo, cole no Claude Code dentro da pasta
+          onde deseja criar o projeto e revise o plano antes de aprovar comandos.</div>
+        <div class="copy-wrap">
+          <button class="copy-button" onclick="copyScaffoldingPrompt(this)">Copiar prompt</button>
+          <pre><code id="scaffolding-prompt-code">Vou construir um app de delivery chamado MANDÁÍ.
+
+Hoje, neste primeiro encontro, eu quero apenas o SCAFFOLD do projeto.
+Sem features de delivery ainda — apenas a estrutura base + uma tela inicial de boas-vindas pra confirmar que tudo está rodando.
+
+STACK OBRIGATÓRIA:
+- Next.js 14 com App Router
+- TypeScript em modo strict
+- Tailwind CSS
+- ESLint + Prettier configurados
+
+ESTRUTURA DE PASTAS QUE QUERO VER:
+- src/app          (rotas)
+- src/components   (componentes reutilizáveis)
+- src/lib          (utilitários, helpers, regras de negócio)
+- src/lib/data     (mock data e tipos — fica vazio por enquanto)
+
+PALETA DA MARCA MANDÁÍ (configurar no Tailwind):
+- primária:   #FF6B35  (laranja Mandáí)
+- secundária: #2EC4B6  (verde-água, pra acentos)
+- fundo:      #F8F8F8  (cinza muito claro)
+- texto:      #1A1A1A
+
+TELA DE BOAS-VINDAS (src/app/page.tsx):
+- Fundo na cor de fundo da paleta
+- Centralizado vertical e horizontalmente
+- Logo "Mandáí" grande, em laranja, fonte bold
+- Subtítulo cinza: "O delivery em construção 🚧"
+- Um pequeno cartão branco abaixo, com título "Próximas paradas:"
+  e três bullets:
+  • Listagem de restaurantes
+  • Carrinho de compras
+  • Checkout e acompanhamento
+- Um rodapé pequeno: "Construído com Claude Code · DIO PRO"
+
+O QUE EU QUERO QUE VOCÊ FAÇA, EM ORDEM:
+1. Inicialize o projeto Next.js 14 com a stack acima
+2. Crie a estrutura de pastas
+3. Configure o Tailwind com as cores da paleta
+4. Implemente a tela de boas-vindas conforme o desenho acima
+5. Garanta que `npm run dev` sobe sem erros
+6. Me mostre o comando exato pra eu rodar e o endereço pra abrir</code></pre>
+        </div>
+      </section>
+
+      <section id="git-cheat-sheet">
+        <h2>19. Git cheat sheet: primeiro commit</h2>
+        <p>
+          Guia rápido com os comandos essenciais para versionar e publicar seu primeiro projeto no GitHub.
+        </p>
+
+        <div class="callout info">
+          <strong>Objetivo:</strong> sair de uma pasta local com código para um repositório Git com primeiro commit
+          enviado para o GitHub.
+        </div>
+
+        <h3>Fluxo completo do zero</h3>
+        <pre><code># 1. Entrar na pasta do projeto
+cd meu-projeto
+
+# 2. Iniciar o Git na pasta
+git init
+
+# 3. Verificar o status dos arquivos
+git status
+
+# 4. Adicionar todos os arquivos ao stage
+git add .
+
+# 5. Criar o primeiro commit
+git commit -m "first commit"
+
+# 6. Renomear a branch principal para main
+git branch -M main
+
+# 7. Conectar com o repositório remoto do GitHub
+git remote add origin https://github.com/seu-usuario/seu-repositorio.git
+
+# 8. Enviar o projeto para o GitHub
+git push -u origin main</code></pre>
+
+        <h3>Comandos essenciais</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Comando</th>
+              <th>Para que serve</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>git init</code></td>
+              <td>Inicializa um repositório Git na pasta atual.</td>
+            </tr>
+            <tr>
+              <td><code>git status</code></td>
+              <td>Mostra arquivos modificados, adicionados e pendentes.</td>
+            </tr>
+            <tr>
+              <td><code>git add .</code></td>
+              <td>Adiciona todos os arquivos alterados ao stage.</td>
+            </tr>
+            <tr>
+              <td><code>git commit -m "mensagem"</code></td>
+              <td>Salva um snapshot das mudanças com uma mensagem.</td>
+            </tr>
+            <tr>
+              <td><code>git log --oneline</code></td>
+              <td>Lista commits de forma resumida.</td>
+            </tr>
+            <tr>
+              <td><code>git remote -v</code></td>
+              <td>Mostra os repositórios remotos configurados.</td>
+            </tr>
+            <tr>
+              <td><code>git push</code></td>
+              <td>Envia commits locais para o GitHub.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Configuração inicial do Git</h3>
+        <p>Use uma vez na máquina para configurar seu nome e e-mail nos commits.</p>
+        <pre><code>git config --global user.name "Seu Nome"
+git config --global user.email "seu-email@example.com"
+
+# Conferir configuração atual
+git config --global --list</code></pre>
+
+        <h3>Criar um arquivo .gitignore</h3>
+        <p>Evite versionar dependências, builds, variáveis de ambiente e arquivos locais.</p>
+        <pre><code># Exemplo para projetos Node/Next.js
+node_modules
+.next
+dist
+build
+.env
+.env.local
+.DS_Store</code></pre>
+
+        <h3>Erros comuns e como resolver</h3>
+        <details open>
+          <summary>Erro: remote origin already exists</summary>
+          <div>
+            <p>O remoto <code>origin</code> já existe. Confira ou altere a URL.</p>
+            <pre><code>git remote -v
+git remote set-url origin https://github.com/seu-usuario/seu-repositorio.git</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>Erro: src refspec main does not match any</summary>
+          <div>
+            <p>Normalmente acontece quando ainda não existe commit ou a branch tem outro nome.</p>
+            <pre><code>git status
+git add .
+git commit -m "first commit"
+git branch -M main
+git push -u origin main</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>Quero desfazer um arquivo antes do commit</summary>
+          <div>
+            <pre><code># Remover arquivo do stage, mas manter alteração no arquivo
+git restore --staged nome-do-arquivo
+
+# Descartar alterações locais de um arquivo
+git restore nome-do-arquivo</code></pre>
+          </div>
+        </details>
+
+        <h3>Checklist antes do primeiro push</h3>
+        <div class="checklist">
+          <label><input type="checkbox" /> Rodei <code>git status</code>.</label>
+          <label><input type="checkbox" /> Criei ou conferi o <code>.gitignore</code>.</label>
+          <label><input type="checkbox" /> Não estou enviando <code>.env</code>, tokens, senhas ou secrets.</label>
+          <label><input type="checkbox" /> Fiz o primeiro commit com uma mensagem clara.</label>
+          <label><input type="checkbox" /> Configurei o remoto correto do GitHub.</label>
+          <label><input type="checkbox" /> Rodei <code>git push -u origin main</code>.</label>
+        </div>
+      </section>
+
+      <section id="workflows">
+        <h2>20. Fluxos práticos para devs</h2>
+        <details open>
+          <summary>Entender projeto novo</summary>
+          <div>
+            <pre><code>Faça uma visão geral deste repositório.
+Explique arquitetura, principais pastas, tecnologias e fluxo principal.</code></pre>
+          </div>
+        </details>
+        <details>
+          <summary>Corrigir bug</summary>
+          <div>
+            <pre><code>Investigue por que o endpoint de checkout retorna erro 500.
+Antes de alterar código, explique sua hipótese e plano.</code></pre>
+          </div>
+        </details>
+        <details>
+          <summary>Criar feature</summary>
+          <div>
+            <pre><code>Quero adicionar suporte a magic link.
+Primeiro analise o fluxo atual de autenticação e proponha um plano.</code></pre>
+          </div>
+        </details>
+        <details>
+          <summary>Revisar PR</summary>
+          <div>
+            <pre><code>Revise as mudanças atuais como code review.
+Aponte bugs, riscos, inconsistências e melhorias.</code></pre>
+          </div>
+        </details>
+        <details>
+          <summary>Criar testes</summary>
+          <div>
+            <pre><code>Crie testes para @src/services/subscription.ts seguindo o padrão existente.
+Rode somente os testes relacionados.</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <section id="best-practices">
+        <h2>21. Boas práticas</h2>
+        <div class="grid two">
+          <div class="card"><strong>Peça plano antes de código</strong>
+            <pre><code>Analise o problema e mostre um plano antes de editar arquivos.</code></pre>
+          </div>
+          <div class="card"><strong>Defina critérios de sucesso</strong>
+            <pre><code>Considere pronto quando testes, lint e build passarem.</code></pre>
+          </div>
+          <div class="card"><strong>Use arquivos como contexto</strong>
+            <pre><code>Compare @auth.ts com @session.ts e proponha melhorias.</code></pre>
+          </div>
+          <div class="card"><strong>Compacte sessões longas</strong>
+            <pre><code>/compact preserve decisões, arquivos alterados e próximos passos</code></pre>
+          </div>
+        </div>
+        <div class="callout warn"><strong>Para demos:</strong> use repositórios pequenos ou preparados, com scripts
+          funcionando e sem secrets reais no ambiente.</div>
+      </section>
+
+      <section id="checklist">
+        <h2>22. Checklist final</h2>
+        <h3>Instalação</h3>
+        <div class="checklist">
+          <label><input type="checkbox" /> Tenho conta Claude/Anthropic.</label>
+          <label><input type="checkbox" /> Instalei Claude Code no terminal.</label>
+          <label><input type="checkbox" /> Fiz login com <code>claude auth login</code>.</label>
+          <label><input type="checkbox" /> Instalei a extensão no VS Code.</label>
+          <label><input type="checkbox" /> Testei <code>claude --help</code>.</label>
+        </div>
+        <h3>CLI</h3>
+        <div class="checklist">
+          <label><input type="checkbox" /> Sei iniciar com <code>claude</code>.</label>
+          <label><input type="checkbox" /> Sei usar <code>claude -p</code>.</label>
+          <label><input type="checkbox" /> Sei continuar com <code>claude -c</code>.</label>
+          <label><input type="checkbox" /> Sei retomar sessão com <code>claude --resume</code>.</label>
+        </div>
+        <h3>Sessão e comandos</h3>
+        <div class="checklist">
+          <label><input type="checkbox" /> Sei usar <code>/help</code>.</label>
+          <label><input type="checkbox" /> Sei usar <code>/usage</code>.</label>
+          <label><input type="checkbox" /> Sei usar <code>/context</code>.</label>
+          <label><input type="checkbox" /> Sei usar <code>/compact</code>.</label>
+          <label><input type="checkbox" /> Sei usar <code>/btw</code>.</label>
+        </div>
+      </section>
+
+      <section id="glossary">
+        <h2>23. Glossário rápido</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Termo</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Claude</td>
+              <td>Família de modelos da Anthropic.</td>
+            </tr>
+            <tr>
+              <td>Claude Code</td>
+              <td>Ferramenta agentic de coding via terminal/IDE.</td>
+            </tr>
+            <tr>
+              <td>CLI</td>
+              <td>Interface de linha de comando.</td>
+            </tr>
+            <tr>
+              <td>Session</td>
+              <td>Conversa de trabalho com histórico.</td>
+            </tr>
+            <tr>
+              <td>Context</td>
+              <td>Informações disponíveis para o modelo.</td>
+            </tr>
+            <tr>
+              <td>Token</td>
+              <td>Unidade de texto processada pelo modelo.</td>
+            </tr>
+            <tr>
+              <td>Usage</td>
+              <td>Uso, custo, limites e estatísticas.</td>
+            </tr>
+            <tr>
+              <td>Effort</td>
+              <td>Nível de raciocínio usado pelo modelo.</td>
+            </tr>
+            <tr>
+              <td>Skill</td>
+              <td>Workflow/comando customizado em Markdown.</td>
+            </tr>
+            <tr>
+              <td>Slash command</td>
+              <td>Comando iniciado com <code>/</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer>
+        <p><strong>claude.code dio.me</strong></p>
+        <p>Material de apoio para webinar.</p>
+        <p><a href="#top">Voltar ao topo ↑</a></p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    function copyScaffoldingPrompt(button) {
+      const code = document.getElementById('scaffolding-prompt-code');
+      const text = code ? code.innerText : '';
+
+      navigator.clipboard.writeText(text).then(function () {
+        const original = button.innerText;
+        button.innerText = 'Copiado!';
+        setTimeout(function () { button.innerText = original; }, 1600);
+      }).catch(function () {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.innerText = 'Selecionei o texto';
+      });
+    }
+
+    function copyPoAgentPrompt(button) {
+      const code = document.getElementById('po-agent-prompt-code');
+      const text = code ? code.innerText : '';
+
+      navigator.clipboard.writeText(text).then(function () {
+        const original = button.innerText;
+        button.innerText = 'Copiado!';
+        setTimeout(function () { button.innerText = original; }, 1600);
+      }).catch(function () {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.innerText = 'Selecionei o texto';
+      });
+    }
+  </script>
+</body>
+
+</html>
